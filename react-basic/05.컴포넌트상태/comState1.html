@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <div id="root"></div>
+  <script type="text/babel">
+    const rootElement = document.querySelector('#root');
+    const UseState1 = () => {
+      let nums = [1, 2, 3];
+      let result1 = 0
+      const [result2, setResult2] = React.useState(0);
+      const plus = () => {
+        result1++
+        setResult2(result2+1)
+      }
+      return (
+        <>
+          <h1>Component State</h1>
+          <button onClick={plus}>+</button>
+          <h2>{result1}</h2>
+          <h2>{result2}</h2>
+          <hr/>
+          {nums.map((num, index) => (
+            <h3 key={index}>{num}</h3>
+          ))}
+        </>
+      )
+    }
+    const App = () => {
+      return (
+        <>
+          <UseState1 />
+        </>
+      )
+    }
+    ReactDOM.createRoot(rootElement).render(<App />);
+  </script>
+</body>
+</html>

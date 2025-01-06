@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <style>
+    .title {
+      color: red;
+      font-size: 70px;
+      text-align: center;
+      font-weight: bold;
+      text-transform: uppercase;
+      background-color: darkgray;
+    }
+  </style>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const rootElement = document.querySelector('#root');
+    const element = (
+      <React.Fragment>
+        <h1>Fucking React</h1>
+        <h2>Danm it</h2>
+        {
+          ['shit','fuck','dick'].map((badword,index) => <h3 key={index}>{badword}</h3>)
+        }
+      </React.Fragment>
+    )
+    const root = ReactDOM.createRoot(rootElement);
+    root.render(element);
+  </script>
+</body>
+</html>

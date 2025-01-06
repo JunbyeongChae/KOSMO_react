@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+        10번과 11번은 리액트 플젝이 아닌 곳에서 실습하기 위해 추가하였다.
+        CDN 방식 - 로컬PC 캐쉬 메모리 사용함 - 시스템 사용 발생 - 속도 느리다
+        unpkg방식 - 네트워크 통해 객체 주입(원격객체 사용함) - 속도 향상
+    -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- 
+        ES5같은 버전에서도 동작하도록 지원 받기 위해서 바벨도 주입 받음.
+    -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>    
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        //자바스크립트에서 html노드를 접근하기 위해서 브라우저 내장객체인 document는 querySelector()제공함.
+        const rootElement = document.querySelector("#root") //id인 경우 반드시 #추가
+        const element = (
+            <React.Fragment
+                className="box"
+                children = {[
+                    React.createElement("h1", null, "One"),
+                    React.createElement("h1", null, "Two"),
+                    React.createElement("h1", null, "Three")
+                ]}
+            />
+        )
+        ReactDOM.createRoot(rootElement).render(element)
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script crossorigin="" src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin="" src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <div id="root"></div>
+  <script type="text/babel">
+    const root = ReactDOM.createRoot(document.querySelector('#root'));
+    const todos = [
+      { id: 1, value: "방청소" },
+      { id: 2, value: "빨래" },
+      { id: 3, value: "조깅" }
+    ]
+    const App = () => {
+      const[items, setItems] = React.useState(todos);
+      const doneClick = (todo) => {
+        console.log(todo.value);
+        setItems(items.filter((item) => item!== todo));
+      }
+      return (
+        <>
+          {items.map((item, index) => (
+            <div key={index}>
+              <span>{item.value}</span>
+              <button onClick={() => doneClick(item)}>Done</button>
+            </div>
+          ))}
+        </>
+      )
+    }
+    root.render(<App />);
+  </script>
+</body>
+
+</html>

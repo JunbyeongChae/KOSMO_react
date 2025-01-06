@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const rootElement = ReactDOM.createRoot(document.querySelector('#root'));
+    const App = () => {
+      const [keyword, setKeyword] = React.useState(() => {
+        return window.localStorage.getItem('keyword')||"";
+      });
+      const [resert, setResert] = React.useState("");
+      const [typing, setTyping] = React.useState(false);
+      React.useEffect(() => {
+        window.localStorage.setItem('keyword', keyword);
+      },[keyword])
+      const handleChange = (event) => {
+        //print what user inserted
+        setKeyword(event.target.value);
+        setTyping(true);
+      }
+      const handleClick = (event) => {
+        setTyping(false);
+        setResert(`search value: ${keyword}`);
+      }
+      const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+          handleClick();
+        }
+      }
+      return (
+        <>
+          <input 
+            type="text" 
+            onChange={handleChange} 
+            onKeyDown={handleKeyDown} 
+            value={keyword}
+          />
+          <button onClick={handleClick}>검색</button>
+          <p>{typing ? `user input value: ${keyword}...` : resert}</p>
+        </>
+      )
+    }
+    rootElement.render(<App />);
+  </script>
+</body>
+
+</html>

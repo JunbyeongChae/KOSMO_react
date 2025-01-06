@@ -1,0 +1,43 @@
+.form {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap; /* 한 줄에 하나씩 떨어질 수 있도록 랩을 주고 */
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  margin-bottom: 1em;
+}
+
+.input,
+.textarea,
+.select,
+.button,
+.fileInput {
+  font-size: 0.8rem;
+  width: 100%;
+  border: 0;
+  padding: 0.5em;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  background: white;
+}
+
+.input,
+.select {
+  flex: 1 1 30%; /* 30%주어서 한 줄에 3개씩 나오게 하고 */
+}
+
+.fileInput {
+  padding: 0;
+  flex: 1 1 50%;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus,
+.button:focus {
+  outline: 0;
+}
+
+.textarea {
+  flex-basis: 100%;
+}

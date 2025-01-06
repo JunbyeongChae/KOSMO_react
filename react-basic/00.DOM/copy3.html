@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Element찍어내기</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    /* 
+    반복되는 element를 함수로 처리
+    리액트가 제공하는 사용자정의 컴포넌트로 변경해 본다
+    1)파라미터값을 props문법에 맞게 {}로 묶어준다.
+    2)함수의 이름은 반드시 대문자로 시작할것 - 태그와 분리
+    */
+    const rootElement = document.querySelector('#root');
+    const Paint = ({title, description}) => {
+      return (
+        <div>
+          <h1>{title}</h1>
+          <p>{description}</p>
+        </div>
+      )
+    }
+    const element = (
+      <>
+        {/* 함수를 태그 처럼 사용해보자 */}
+        <Paint title="Fucking React" description="Danm it" />
+        <Paint title="Fucking Java" description="you too" />
+        <Paint title="Fucking JavaScript" description="and you too" />
+      </>
+    )
+    const root = ReactDOM.createRoot(rootElement);
+    root.render(element);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <div id="root"></div>
+  <script type="text/babel">
+    const rootElement = document.querySelector('#root');
+    //파라미터에{}가 있으면 props다.
+    const Number2 = ({number, selected}) => {
+      return selected ? <h1>{number}</h1> : <h3>{number}</h3>
+    }
+    const element = (
+      <>
+      {/* 여기는 jsx 나와바리 - key갑은 반드시 유니크해야함 */}
+      {/* javascript 복잡한 연산을 element사용하는 곳에서 사용가능 */}
+        <Number2 number={1} />
+        <Number2 number={2} />
+        <Number2 number={3} selected={true}/>
+        <Number2 number={4} />
+        <Number2 number={5} />
+      </>
+    )
+    const root = ReactDOM.createRoot(rootElement);
+    root.render(element);
+  </script>
+</body>
+</html>
+
+<!--
+홀수는 작게 짝수는 크게 출력
+-->

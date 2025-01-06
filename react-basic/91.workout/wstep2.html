@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <style>
+    .items {
+      padding-left: 0;
+    }
+
+    .item {
+      list-style: none;
+      color: red;
+      font-size: 3rem;
+      font-weight: bold;
+      background-color: darkgray;
+      margin-bottom: 1rem;
+      padding: 1rem; 
+
+    }
+  </style>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const rootElement = document.querySelector('#root');
+    const WorkoutList = ({ props }) => {
+      //선언부
+      const [items, setItems] = React.useState([
+        { id: 1, name: "Bench-Press", count: 0 },
+        { id: 2, name: "Squat", count: 0 },
+        { id: 3, name: "Deadlift", count: 0 }
+      ]);
+      //렌더링
+      return (
+        <>
+          <ul className="items">
+            {items.map((item) => (
+              <WorkoutItem key={item.id} item={item} />
+            ))}
+          </ul>
+        </>
+      )
+    }////////// end of WorkoutList
+    const WorkoutItem = (props) => {
+      const item = props.item
+      return (
+        <>
+          <li className="item">{item.name}-({item.count}회)</li>
+        </>
+      )
+    }
+    const element = (
+      <>
+        <WorkoutList />
+      </>
+    )
+    ReactDOM.createRoot(rootElement).render(element)
+  </script>
+</body>
+
+</html>

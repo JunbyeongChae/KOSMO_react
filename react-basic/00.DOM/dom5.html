@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <style>
+    .title {
+      color: red;
+      font-size: 70px;
+      text-align: center;
+      font-weight: bold;
+      text-transform: uppercase;
+      background-color: darkgray;
+    }
+  </style>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const rootElement = document.querySelector('#root');
+    const msg = 'Fucking React!!!! Danm it!!!!!!!!!!!!!!! This is bull shit!!'
+    const className = 'title'
+    const element = <h2 className={className}>{msg}</h2>
+    const element1 = <h2 className='title2'>{msg}</h2>
+    //앞 - 주입할 내용, 뒤 - root
+    const root = ReactDOM.createRoot(rootElement);
+    root.render(element);
+  </script>
+</body>
+</html>

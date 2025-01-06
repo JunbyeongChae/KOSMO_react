@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const rootElement = ReactDOM.createRoot(document.querySelector('#root'));
+    const Counter = () => {
+      const [num, setNum] = React.useState(0);
+      const handleIncrement = () => {
+        //setNum(num + 1);
+        setNum(prev => prev + 100);
+      }
+      return (
+        <>
+          <span style={{fontSize : 78, margin : 10}}>LIKE {num}</span>
+          <button style={{fontSize : 70, margin : 10}} onClick={() => handleIncrement()}>👍</button>
+        </>
+      )
+    };
+    const App =() => {
+      return (
+        <>
+          <Counter />
+        </>
+      )
+    }
+    rootElement.render(<App/>);
+  </script>
+</body>
+
+</html>

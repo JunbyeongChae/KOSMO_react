@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script crossorigin="" src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin="" src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <div id="root"></div>
+  <script type="text/babel">
+    const root = ReactDOM.createRoot(document.querySelector('#root'));
+    const App = () => {
+      const title = "BookName"
+      const [books, setBooks] = React.useState([
+        "BookName1",
+        "BookName2",
+        "BookName3"
+      ]);
+      let [like, setLike] = React.useState(0);
+      let [disLike, setDisLike] = React.useState(0);
+      const add = () => {
+        setLike(like + 1);
+      }
+      const minus = () => {
+        setDisLike(disLike + 1);
+      }
+      return (
+        <>
+        <ul>
+          <li>
+            <div>
+              <h2>{books[0]}</h2>
+              <p>published 2024.12.11</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h2>{books[1]}</h2>
+              <p>published 1992.06.16</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h2>{books[2]}</h2>
+              <p>published 2000.07.11</p>
+            </div>
+          </li>
+        </ul>
+        </>
+      )
+    }
+    root.render(<App />);
+  </script>
+</body>
+
+</html>

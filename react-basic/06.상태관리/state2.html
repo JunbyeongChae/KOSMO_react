@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <div id="root"></div>
+  <script type="text/babel">
+    const rootElement = document.querySelector('#root');
+    const App = () => {
+      //use가 붙은 것은 모두 16.8부터 지원되는 React Hook
+      //useState는 서로 독립적이고 무엇이든 담을 수 있다.
+      //일반 변수의 차이점은 값이 바뀌는 것을 바로 인지 가능
+      //중요한점 -> 컴포넌트 상태는 렌더링 주기와 관련이 있기 때문
+      const keywordState = React.useState('');
+      const keyword = keywordState[0];
+      const setKeyword = keywordState[1];
+      const handleChange = (event) => {
+        console.log(event.target.value);
+        setKeyword(event.target.value);
+      }
+      const handleClick = (event) => {
+        console.log(event.target);
+        console.log(`${keyword}`);
+      }
+      return (
+        <>
+          <input type="text" onChange={handleChange}/>
+          <button onClick={handleClick}>검색</button>
+        </>
+      )
+    }
+    ReactDOM.createRoot(rootElement).render(<App />);
+  </script>
+</body>
+</html>

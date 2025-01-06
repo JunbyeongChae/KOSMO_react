@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 
+  아래script는 리액트 프로젝트가 아닌 곳에서 실습하기 위해 추가
+  CDN방식 - 로컬PC캐쉬메모리 사용함 - 시스템사용 - 속도 느림
+  unpkg방식 - 네트워크통해 객체주입(원격객체 이용) - 속도 향상
+  -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- 
+  아래script는 ES5같은 버전에서도 동작 하도록 지원 받기 위해서 바벨도 주입
+  -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>    
+</head>
+<body>
+  <div id="root"></div>
+  <style>
+
+  </style>
+  <script type="text/babel">
+    //자바스크립트에서 html노드를 접근하기 위해서 브라우저 내장객체인 documet는 querySelector를 제공
+    const rootElement = document.querySelector('#root');
+    //React에서 제공하는 createElement함수로 태그 생성 가능함
+    //스타일 추가시에는 반드시 class속성이 아니라 className으로 사용
+    const element = (
+      //DOM생성하기 - 컴포넌트라 한다. - 함수이다.(일급함수,고차함수 지원)
+      "h1"
+      ,null
+      ,["Fucking React", "Danm it!", "This is bull shit!"]
+    );
+    //rootElement에 대해서 React루트를 만들고 해당 루트를 반환
+    //반환된 루트를 render함수를 통해 ReactElement를 DOM으로 랜더링할 수 있음
+    ReactDOM.createRoot(rootElement).render(element);
+  </script>
+</body>
+</html>

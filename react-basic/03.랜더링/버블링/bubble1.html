@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .DIV1 {
+      background-color: rgb(255, 160, 160);
+      width: 250px;
+      height: 150px;
+    }
+
+    .DIV2 {
+      background-color: rgb(160, 255, 160);
+      width: 200px;
+      height: 100px;
+      margin-left: 25px;
+      margin-top: 5px;
+    }
+    
+    .DIV3 {
+      background-color: rgb(160, 160, 255);
+      width: 150px;
+      height: 50px;
+      margin-left: 25px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="DIV1">
+    DIV1
+    <div class="DIV2">
+      DIV2
+      <div class="DIV3">
+        DIV3
+      </div>
+    </div>
+  </div>
+  <script>
+    const divs = document.querySelectorAll("div");
+    const clickEvent = (e) => {
+      console.log(e.currentTarget.className);
+    };
+    divs.forEach((div) => {
+      div.addEventListener("click", clickEvent, { capture: true });
+    });
+  </script>
+</body>
+</html>

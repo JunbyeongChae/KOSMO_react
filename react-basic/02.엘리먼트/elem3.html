@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 
+  아래script는 리액트 프로젝트가 아닌 곳에서 실습하기 위해 추가
+  CDN방식 - 로컬PC캐쉬메모리 사용함 - 시스템사용 - 속도 느림
+  unpkg방식 - 네트워크통해 객체주입(원격객체 이용) - 속도 향상
+  -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- 
+  아래script는 ES5같은 버전에서도 동작 하도록 지원 받기 위해서 바벨도 주입
+  -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    //컴포넌트는 함수이다.
+    //함수인데 태그로 사용이 가능하다.
+    //반드시 대문자로 시작 - 기존태그와 구분
+    //반드시 파라미터는 props로 묶어줌 - {}사용
+    const rootElement = document.querySelector('#root');
+    const Hamsu = ({ title, description, children }) => (
+      <>
+        <h1>{title}</h1>
+        <p>{description}</p>
+        {/* children이 먹힌다는건 jsx라는 증거임 */}
+        {children}
+      </>
+    )
+    const Nice = () => <h3>fucking ==== rerendering</h3>
+    const element = (
+      <>
+        <Hamsu title='Java' description='fucking javaㅗㅗㅗ'>
+          <Nice />
+          <Nice />
+          <Nice />
+        </Hamsu>
+        <Hamsu title='Python' description='fucking pythonㅗㅗㅗ' />
+        <Hamsu title='Javascript' description='fucking javascriptㅗㅗㅗ' />
+      </>
+    )
+    ReactDOM.createRoot(rootElement).render(element);
+  </script>
+</body>
+
+</html>

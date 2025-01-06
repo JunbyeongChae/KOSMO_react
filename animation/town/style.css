@@ -1,0 +1,76 @@
+*{
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+body{
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  animation: sky 10s linear infinite;
+}
+
+.sun{
+  width: 130px;
+  height: 130px;
+  position: absolute;
+  top: 80px;
+  left: 150px;
+  margin: auto;
+  transform: translate(0, 100px);
+  transform-origin: center 800px;
+  animation: sun 10s linear infinite;
+}
+
+.cloud{
+  width: 200px;
+  height: 150px;
+  position: absolute;
+  top: 100px;
+  left: 600px;
+  margin: auto;
+  animation: cloud 10s linear infinite;
+}
+
+.circle{
+  position: absolute;
+  bottom: 0px;
+  left: 250px;
+  width: 200px;
+  animation: circle 10s linear infinite;
+}
+
+section{
+  width: 1000px;
+  height: 400px;
+  position: relative;
+  border: 0.5px solid red;
+}
+
+@keyframes sky{
+  0%{background: rgb(43, 44, 73);}
+  25%{background: rgb(158, 214, 210);}
+  50%{background: rgb(195, 248, 250);}
+  75%{background: rgb(255, 159, 121);}
+  100%{background: rgb(43, 44, 73);}
+}
+
+@keyframes sun{
+  0%{transform: rotate(-90deg); opacity: 0;}
+  50%{transform: rotate(0deg); opacity: 1;}
+  100%{transform: rotate(90deg); opacity: 0;}
+}
+
+@keyframes cloud{
+  0%{left:100%; opacity: 1;}
+  25%{left:75%; opacity: 1;}
+  50%{left:50%; opacity: 1;}
+  75%{left:25%; opacity: 1;}
+  100%{left:0%; opacity: 1;}
+}
+
+@keyframes circle{
+  0%{translate: rotate(0deg); opacity: 1;}
+  100%{translate: rotate(360deg); opacity: 1;}
+}

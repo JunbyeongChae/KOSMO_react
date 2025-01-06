@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리액트 적용 버전</title>
+</head>
+<body>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>    
+    <div id="root"></div>
+    <script type="text/babel">
+        /* 
+        div는 리렌더링이 없고 button의 숫자만 리렌더링이 됨 - 개발자 센터 확인함
+        button만 번쩍한다. - 즉 버튼은 새로 만들어지지 않고 버튼 라벨만 바뀐다
+        탭키를 쳐보면 숫자 바뀌는 버튼의 테두리 선이 계속 굵게 유지되고 있었다. -> 이것은 버튼 안에 숫자만 바뀐다는 증거다
+        그러나 rerender1.html에서는 탭키를 쳐보면 숫자가 바뀌는 버튼의 테두리선이 풀려 버렸다. - 포커스를 잃었다.
+        */
+        const rootElement = document.getElementById("root")
+        function random(){
+            //0부터 9까지 랜덤 숫자 채번. 실수형 버림 처리
+            const number = Math.floor(Math.random()*9+1)
+            const element = <button>{number}</button>
+            //리액트 바뀐거만 렌더링 해줌 - 그러니까 탭을 누르면 버튼의 포커스를 잃지 않더라
+            //리렌더링이 되면 화면의 배치가 같이 바뀐다. - Reflow - 비용이 높아짐
+            //그런데 리액트는 바뀐거만 렌더링 되니까 문제가 해결됨
+            //innerHTML
+            ReactDOM.render(element, rootElement)
+        }
+        setInterval(random, 1000)
+    </script>
+</body>
+</html>
+<!-- 
+변경점이 있을 때마다 버튼이 사라졌다가 다시 생성되면 다른 엘리먼트 배치에도 영향을 주게된다.
+그래서 나중에 자바스크립트의 프론트앤드 최적화를 이야기할 때 reflow나 repain에 대한 개념이 중요함.
+-->
